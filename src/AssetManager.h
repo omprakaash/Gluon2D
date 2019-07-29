@@ -19,6 +19,7 @@ namespace Gluon2D {
     public:
         AssetManager();
         void saveTexture( const char *file, SDL_Texture* texture );
+        SDL_Texture* getTexture(const char* texture_name);
     };
 
 

@@ -20,12 +20,15 @@ private:
     Window* m_window;
     Renderer* m_renderer;
     AssetManager* m_asset_manager; // Should asset manager be in the heap?
+    std::vector<GameObject*> m_game_objects;
     bool m_is_running;
+
 public:
     Game();
     void start();
     void update();
     void render();
+    void addGameObject(GameObject* gameObject);
 };
 
 }

@@ -16,3 +16,7 @@ void Gluon2D::AssetManager::saveTexture(const char *t_file, SDL_Texture* texture
     std::string texture_name = s.substr(s.find_last_of("/\\") + 1);;
     m_textures.insert( std::pair<std::string, SDL_Texture*> ( texture_name , texture ) );
 }
+
+SDL_Texture* Gluon2D::AssetManager::getTexture(const char * texture_name) {
+    return m_textures[texture_name];
+}

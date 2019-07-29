@@ -8,6 +8,7 @@
 
 #include <SDL_render.h>
 #include "AssetManager.h"
+#include "GameObject.h"
 
 namespace  Gluon2D {
 
@@ -15,13 +16,19 @@ class Renderer {
 private:
     AssetManager* m_asset_manager;
     SDL_Renderer* m_renderer;
+    std::vector<GameObject*> m_renderables;
+
 public:
     Renderer(SDL_Window* window, AssetManager* asset_manager);
     void render(SDL_Texture *texture);
     void loadTexture(const char* file);
 
     // TODO
-    void addRenderable();
+    void addRenderable(GameObject* renderable);
+    const std::vector<GameObject *> &getRenderables() const;
+    void clear();
+    void present();
+
 };
 
 }
