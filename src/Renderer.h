@@ -20,7 +20,7 @@ private:
 
 public:
     Renderer(SDL_Window* window, AssetManager* asset_manager);
-    void render(SDL_Texture *texture);
+    void render(SDL_Texture *texture, int x, int y, int width, int height);
     void loadTexture(const char* file);
 
     // TODO

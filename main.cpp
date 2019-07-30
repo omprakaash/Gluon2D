@@ -2,6 +2,7 @@
 
 #include "src/Game.h"
 
+
 int main() {
     std::cout << "Hello, World!" << std::endl;
     Gluon2D::Game game = Gluon2D::Game();
@@ -9,3 +10,4 @@ int main() {
     game.update();
     return 0;
 }
+

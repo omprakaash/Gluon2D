@@ -9,6 +9,7 @@
 #include <vector>
 #include <unordered_map>
 #include "Components/Component.h"
+#include "Input.h"
 
 namespace Gluon2D {
 
@@ -16,11 +17,11 @@ class GameObject {
 private:
     std::vector<Component*> m_components;
     std::unordered_map<const std::type_info*, Component*> m_component_map;
-    void update();
+
 public:
 
     void addComponent(Component* component);
-
+    void update();
     template<typename T>
     Component* getComponent(){
         return m_component_map[&typeid(T)];

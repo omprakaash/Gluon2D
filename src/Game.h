@@ -11,6 +11,7 @@
 #include "Window.h"
 #include "AssetManager.h"
 #include "Renderer.h"
+#include "Input.h"
 
 namespace Gluon2D {
 
@@ -24,10 +25,14 @@ private:
     bool m_is_running;
 
 public:
+
+    InputManager* input;
+
     Game();
     void start();
     void update();
     void render();
+
     void addGameObject(GameObject* gameObject);
 };
 

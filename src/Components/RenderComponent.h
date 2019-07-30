@@ -21,6 +21,7 @@ public:
 private:
     Renderer *m_renderer;
     virtual void update() override ;
+    virtual const char* name() override;
     SDL_Texture* m_texture;
 
 };

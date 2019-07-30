@@ -14,11 +14,12 @@ class Component {
 
 
 public:
-    Component(){}
+    GameObject* m_parent;
 
+    Component(){}
     void set_parent(GameObject* parent);
     virtual void update() = 0;
-    GameObject* m_parent;
+    virtual const char* name() = 0;
 
 };
 

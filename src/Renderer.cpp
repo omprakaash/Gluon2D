@@ -32,8 +32,13 @@ void Gluon2D::Renderer::loadTexture(const char *file) {
     SDL_FreeSurface(load_surface);
 }
 
-void Gluon2D::Renderer::render(SDL_Texture *texture) {
-    SDL_RenderCopy(m_renderer, texture, NULL, NULL);
+void Gluon2D::Renderer::render(SDL_Texture *texture, int x, int y, int width, int height) {
+    SDL_Rect rect;
+    rect.x = x;
+    rect.y = y;
+    rect.h = height;
+    rect.w = width;
+    SDL_RenderCopy(m_renderer, texture, NULL, &rect);
 }
 
 void Gluon2D::Renderer::addRenderable(GameObject* renderable) {

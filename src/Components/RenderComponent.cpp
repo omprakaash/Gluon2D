@@ -18,3 +18,7 @@ void Gluon2D::RenderComponent::makeParentRenderable() {
 void Gluon2D::RenderComponent::update() {
     std::cout<< "Hello" ;
 }
+
+const char* Gluon2D::RenderComponent::name(){
+    return "RenderComponent";
+}
