@@ -7,19 +7,37 @@
 
 #include "Component.h"
 #include "../Math/Transform.h"
+#include "../Math/Vector.h"
 
 namespace Gluon2D {
 
 class TransformComponent: public Component {
 public:
-    int X;
-    int Y;
-    int W;
-    int H;
-    TransformComponent(int x, int y, int w, int h): X(x), Y(y), W(w), H(h){}
 
-    virtual void update() override;
-    virtual const char* name() override;
+    TransformComponent(GameObject* parent, int x, int y, int width, int height);
+    TransformComponent(GameObject* parent, int x, int y, int width, int height, int rot);
+
+    Vector getPos();
+    int getXPos();
+    int getYPos();
+    int getWidth();
+    int getHeight();
+
+    void translate(int x, int y);
+    void translateX(int x);
+    void translateY(int y);
+
+    void rotate(float angle);
+
+
+
+    float getAngle();
+
+private:
+    Vector m_pos;
+    int m_width;
+    int m_height;
+    float m_rot;
 };
 
 }

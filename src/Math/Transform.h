@@ -8,9 +8,7 @@
 
 class Transform {
 public:
-    int X;
-    int Y;
-    Transform(int x, int y ): X(x), Y(y){}
+
 };
 
 

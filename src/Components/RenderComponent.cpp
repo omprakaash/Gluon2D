@@ -5,7 +5,10 @@
 #include <iostream>
 #include "RenderComponent.h"
 
-Gluon2D::RenderComponent::RenderComponent( Renderer* renderer, SDL_Texture* texture ): m_renderer(renderer), m_texture(texture) {}
+Gluon2D::RenderComponent::RenderComponent( GameObject* parent, RendererSystem* renderer, SDL_Texture* texture ):
+            Component(parent), m_renderer(renderer), m_texture(texture) {
+    makeParentRenderable();
+}
 
 SDL_Texture* Gluon2D::RenderComponent::getTexture() {
     return m_texture;
@@ -15,10 +18,3 @@ void Gluon2D::RenderComponent::makeParentRenderable() {
     m_renderer->addRenderable(m_parent);
 }
 
-void Gluon2D::RenderComponent::update() {
-    std::cout<< "Hello" ;
-}
-
-const char* Gluon2D::RenderComponent::name(){
-    return "RenderComponent";
-}

@@ -5,6 +5,7 @@
 #ifndef GLUON2D_COMPONENT_H
 #define GLUON2D_COMPONENT_H
 
+#include "../GameObject.h"
 
 namespace Gluon2D {
 
@@ -12,14 +13,10 @@ class GameObject;
 
 class Component {
 
-
 public:
     GameObject* m_parent;
-
-    Component(){}
+    Component(GameObject* parent);
     void set_parent(GameObject* parent);
-    virtual void update() = 0;
-    virtual const char* name() = 0;
 
 };
 

@@ -10,8 +10,11 @@
 
 #include "Window.h"
 #include "AssetManager.h"
-#include "Renderer.h"
-#include "Input.h"
+#include "Systems/RendererSystem.h"
+#include "Systems/InputSystem.h"
+#include "ObjectManager.h"
+#include "Systems/LogicSystem.h"
+#include "Systems/PhysicsSystem.h"
 
 namespace Gluon2D {
 
@@ -19,21 +22,33 @@ class Game {
 
 private:
     Window* m_window;
-    Renderer* m_renderer;
-    AssetManager* m_asset_manager; // Should asset manager be in the heap?
-    std::vector<GameObject*> m_game_objects;
-    bool m_is_running;
+    RendererSystem* m_renderer;
+    AssetManager m_assetManager; // Should asset manager be in the heap?
+    ObjectManager m_objectManager;
+    LogicSystem logicSystem;
+    PhysicsSystem physicsSystem;
+
+    bool m_isRunning;
+
+    void update();
 
 public:
 
     InputManager* input;
 
     Game();
+    ~Game();
     void start();
-    void update();
+
     void render();
 
     void addGameObject(GameObject* gameObject);
+
+    void findGameObject(const char* tag);
+
+
+
+
 };
 
 }

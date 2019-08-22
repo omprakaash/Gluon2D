@@ -7,21 +7,19 @@
 
 
 #include "Component.h"
-#include "../Renderer.h"
+#include "../Systems/RendererSystem.h"
 
 namespace Gluon2D {
 
 class RenderComponent : public Component {
 public:
-    RenderComponent(Renderer* renderer, SDL_Texture* texture);
-    SDL_Texture* getTexture();
 
+    RenderComponent(GameObject* parent, RendererSystem* renderer, SDL_Texture* texture );
+    SDL_Texture* getTexture();
     void makeParentRenderable();
 
 private:
-    Renderer *m_renderer;
-    virtual void update() override ;
-    virtual const char* name() override;
+    RendererSystem *m_renderer;
     SDL_Texture* m_texture;
 
 };

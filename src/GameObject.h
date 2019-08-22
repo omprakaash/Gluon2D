@@ -9,23 +9,39 @@
 #include <vector>
 #include <unordered_map>
 #include "Components/Component.h"
-#include "Input.h"
+#include "Systems/InputSystem.h"
 
 namespace Gluon2D {
 
+class Component;
 class GameObject {
 private:
+
+    int m_id;
+    const char* m_tag;
     std::vector<Component*> m_components;
-    std::unordered_map<const std::type_info*, Component*> m_component_map;
+    std::unordered_map<const std::type_info*, Component*> m_componentMap;
 
 public:
 
-    void addComponent(Component* component);
-    void update();
-    template<typename T>
-    Component* getComponent(){
-        return m_component_map[&typeid(T)];
+    GameObject(){}
+
+    GameObject(const char* tag);
+
+    template <typename T, typename... TArgs >
+    void addComponent(TArgs&&... args){
+        T* component = new T(this, std::forward<TArgs>(args)...);
+        m_components.push_back(component);
+        m_componentMap[&typeid(T)] = component;
     }
+
+    void setTag(const char* tag);
+
+    template<typename T>
+    T* getComponent(){
+        return static_cast<T*>(m_componentMap[&typeid(T)]);
+    }
+
 };
 
 }

@@ -3,6 +3,12 @@
 
 #include "Component.h"
 
-void Gluon2D::Component::set_parent(Gluon2D::GameObject *parent) {
+namespace Gluon2D {
+
+Component::Component(Gluon2D::GameObject *parent): m_parent(parent) {}
+
+void Component::set_parent(Gluon2D::GameObject *parent) {
     m_parent = parent;
+}
+
 }
